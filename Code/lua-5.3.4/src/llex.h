@@ -22,22 +22,21 @@
 /*
 * WARNING: if you change the order of this enumeration,
 * grep "ORDER RESERVED"
-* 警告：如果你改变枚举的顺序，保留命令。
-*/
+**/
 enum RESERVED {
-  /* terminal symbols denoted by reserved words 保留字 定义的终止符号*/
+  /* terminal symbols denoted by reserved words */
   TK_AND = FIRST_RESERVED, TK_BREAK,
   TK_DO, TK_ELSE, TK_ELSEIF, TK_END, TK_FALSE, TK_FOR, TK_FUNCTION,
   TK_GOTO, TK_IF, TK_IN, TK_LOCAL, TK_NIL, TK_NOT, TK_OR, TK_REPEAT,
   TK_RETURN, TK_THEN, TK_TRUE, TK_UNTIL, TK_WHILE,
-  /* other terminal symbols 自他终止符号 */
+  /* other terminal symbols */
   TK_IDIV, TK_CONCAT, TK_DOTS, TK_EQ, TK_GE, TK_LE, TK_NE,
   TK_SHL, TK_SHR,
   TK_DBCOLON, TK_EOS,
   TK_FLT, TK_INT, TK_NAME, TK_STRING
 };
 
-/* number of reserved words 保留字的数目 */
+/* number of reserved words */
 #define NUM_RESERVED	(cast(int, TK_WHILE-FIRST_RESERVED+1))
 
 
@@ -45,13 +44,13 @@ typedef union {
   lua_Number r;
   lua_Integer i;
   TString *ts;
-} SemInfo;  /* semantics information 语义信息 */
+} SemInfo;  /* semantics information  */
 
 
 typedef struct Token {
   int token;
   SemInfo seminfo;
-} Token; /* 记号 */
+} Token; /*  */
 
 
 /* state of the lexer plus state of the parser when shared by all

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "lua\lua.vcproj", "{96BAE134-4DEC-49AF-A6ED-8BC70AB095D4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo", "demo\demo.vcproj", "{C2C0B7CF-933D-4B53-8E80-E5C779F35F6A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{96BAE134-4DEC-49AF-A6ED-8BC70AB095D4} = {96BAE134-4DEC-49AF-A6ED-8BC70AB095D4}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96BAE134-4DEC-49AF-A6ED-8BC70AB095D4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{96BAE134-4DEC-49AF-A6ED-8BC70AB095D4}.Debug|Win32.Build.0 = Debug|Win32
+		{96BAE134-4DEC-49AF-A6ED-8BC70AB095D4}.Release|Win32.ActiveCfg = Release|Win32
+		{96BAE134-4DEC-49AF-A6ED-8BC70AB095D4}.Release|Win32.Build.0 = Release|Win32
+		{C2C0B7CF-933D-4B53-8E80-E5C779F35F6A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C2C0B7CF-933D-4B53-8E80-E5C779F35F6A}.Debug|Win32.Build.0 = Debug|Win32
+		{C2C0B7CF-933D-4B53-8E80-E5C779F35F6A}.Release|Win32.ActiveCfg = Release|Win32
+		{C2C0B7CF-933D-4B53-8E80-E5C779F35F6A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
