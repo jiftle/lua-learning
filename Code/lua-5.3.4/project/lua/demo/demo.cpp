@@ -47,8 +47,14 @@ int _tmain(int argc, _TCHAR* argv[])
     lua_register(L, "add2", add2);
     lua_register(L, "sub2", sub2);
     //在注册完所有的C函数之后，即可在Lua的代码块中使用这些已经注册的C函数了。
-    if (luaL_dostring(L,testfunc))
-        printf("Failed to invoke.\n");
+ /*   if (luaL_dostring(L,testfunc))
+        printf("Failed to invoke.\n");*/
+	int ret =	luaL_dofile(L,"d:\\test.lua");
+	if (ret == 1)
+	{
+		printf("加载执行文件错误\n");
+	}
+
     lua_close(L);
 
 	getchar();
