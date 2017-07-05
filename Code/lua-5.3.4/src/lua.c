@@ -592,7 +592,7 @@ static int pmain (lua_State *L) {
   return 1;
 }
 
-
+//----------------------ÃüÁîĞĞ³ÌĞò----------------------------------
 int main (int argc, char **argv) {
   int status, result;
   lua_State *L = luaL_newstate();  /* create state */

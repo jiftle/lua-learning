@@ -12,19 +12,65 @@ extern "C"       //Õâ¸ö±êÖ¾±ØĞëÒª£¬ÒòÎªluaÊÇÓÃCÓïÑÔĞ´µÄ£¬Èç¹û²»¼ÓÕâ¸ö±êÖ¾½«»áµ¼Ö
 #include <lauxlib.h>  
 }  
 
+
+//´ıLuaµ÷ÓÃµÄC×¢²áº¯Êı¡£
+static int add2(lua_State* L)
+{
+    //¼ì²éÕ»ÖĞµÄ²ÎÊıÊÇ·ñºÏ·¨£¬1±íÊ¾Luaµ÷ÓÃÊ±µÄµÚÒ»¸ö²ÎÊı(´Ó×óµ½ÓÒ)£¬ÒÀ´ËÀàÍÆ¡£
+    //Èç¹ûLua´úÂëÔÚµ÷ÓÃÊ±´«µİµÄ²ÎÊı²»Îªnumber£¬¸Ãº¯Êı½«±¨´í²¢ÖÕÖ¹³ÌĞòµÄÖ´ĞĞ¡£
+    double op1 = luaL_checknumber(L,1);
+    double op2 = luaL_checknumber(L,2);
+    //½«º¯ÊıµÄ½á¹ûÑ¹ÈëÕ»ÖĞ¡£Èç¹ûÓĞ¶à¸ö·µ»ØÖµ£¬¿ÉÒÔÔÚÕâÀï¶à´ÎÑ¹ÈëÕ»ÖĞ¡£
+    lua_pushnumber(L,op1 + op2);
+    //·µ»ØÖµÓÃÓÚÌáÊ¾¸ÃCº¯ÊıµÄ·µ»ØÖµÊıÁ¿£¬¼´Ñ¹ÈëÕ»ÖĞµÄ·µ»ØÖµÊıÁ¿¡£
+    return 1;
+}
+
+//ÁíÒ»¸ö´ıLuaµ÷ÓÃµÄC×¢²áº¯Êı¡£
+static int sub2(lua_State* L)
+{
+    double op1 = luaL_checknumber(L,1);
+    double op2 = luaL_checknumber(L,2);
+    lua_pushnumber(L,op1 - op2);
+    return 1;
+}
+
+
+const char* testfunc = "print(add2(1.0,2.0)) print(sub2(20.1,19))";
+
 int _tmain(int argc, _TCHAR* argv[])
 {
-	lua_State *L = luaL_newstate();  
-	luaL_openlibs(L);  
-	luaL_dofile(L,"test.lua");  
-
-	const char *buf = "print('Hello World')";  
-	luaL_dostring(L,buf);  
-
-	lua_close(L);  
+    lua_State* L = luaL_newstate();
+    luaL_openlibs(L);
+    //½«Ö¸¶¨µÄº¯Êı×¢²áÎªLuaµÄÈ«¾Öº¯Êı±äÁ¿£¬ÆäÖĞµÚÒ»¸ö×Ö·û´®²ÎÊıÎªLua´úÂë
+    //ÔÚµ÷ÓÃCº¯ÊıÊ±Ê¹ÓÃµÄÈ«¾Öº¯ÊıÃû£¬µÚ¶ş¸ö²ÎÊıÎªÊµ¼ÊCº¯ÊıµÄÖ¸Õë¡£
+    lua_register(L, "add2", add2);
+    lua_register(L, "sub2", sub2);
+    //ÔÚ×¢²áÍêËùÓĞµÄCº¯ÊıÖ®ºó£¬¼´¿ÉÔÚLuaµÄ´úÂë¿éÖĞÊ¹ÓÃÕâĞ©ÒÑ¾­×¢²áµÄCº¯ÊıÁË¡£
+    if (luaL_dostring(L,testfunc))
+        printf("Failed to invoke.\n");
+    lua_close(L);
 
 	getchar();
 
-	return 0;  
+    return 0;
 }
+
+
+
+//int _tmain(int argc, _TCHAR* argv[])
+//{
+//	lua_State *L = luaL_newstate();  
+//	luaL_openlibs(L);  
+//	luaL_dofile(L,"test.lua");  
+//
+//	const char *buf = "print('Hello World')";  
+//	luaL_dostring(L,buf);  
+//
+//	lua_close(L);  
+//
+//	getchar();
+//
+//	return 0;  
+//}
 
